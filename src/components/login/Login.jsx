@@ -21,7 +21,7 @@ const Login = () => {
                 <label>pasword</label>
                 <input type="password" />
             </div>
-            <button onClick={handleLogin}>login</button>
+            <button onClick={handleLogin}>Login</button>
         </form>
     </div>
   )
