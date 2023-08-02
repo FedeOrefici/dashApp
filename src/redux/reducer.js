@@ -1,26 +1,18 @@
 import { ADD_PATIENTS, DATA_PATIENTS } from "./actionTypes"
 
 let initialState = {
-    allPatients : []
+    allPatients : [],
 }
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
-        case ADD_PATIENTS: {
-            return {
-                ...state,
-                allPatients: [...state.allPatients, action.payload]
-            }
-        }
         
-        case DATA_PATIENTS: {
+        case ADD_PATIENTS: 
             return {
                 ...state,
-                allPatients: action.payload
-            }
+                allPatients: [...state.allPatients, action.payload]    
         }
-
-        default:
+        default: 
             return state;
     }
 }
