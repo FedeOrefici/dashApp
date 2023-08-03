@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux"
 import { useState } from "react"
-import { Button } from "@chakra-ui/react"
+import { Button, Alert,  AlertIcon,  AlertTitle,  AlertDescription, } from "@chakra-ui/react"
 import { addUser } from "../../redux/actions"
+
 
 const AddPatient = () => {
     
@@ -29,9 +30,14 @@ const AddPatient = () => {
             age: '',
             symptoms: ''
         })
+        return (
+          <Alert status='error'>
+          <AlertIcon />
+          <AlertTitle>Your browser is outdated!</AlertTitle>
+          <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
+          </Alert>
+        )
       }
-
-
 
 
   return (
