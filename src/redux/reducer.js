@@ -1,7 +1,8 @@
-import { ADD_PATIENTS, DELETE_PATIENTS } from "./actionTypes"
+import { ADD_APPOINTMENTS, ADD_PATIENTS, DELETE_PATIENTS } from "./actionTypes"
 
 let initialState = {
     allPatients : [],
+    appointments: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -19,7 +20,13 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 allPatients: updateUser
             }
-b 
+        
+        case ADD_APPOINTMENTS:
+            return {
+                ...state,
+                appointments: [...state.appointments, action.payload]
+            }
+
         default: 
             return state;
     }
