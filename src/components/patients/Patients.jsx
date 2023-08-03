@@ -1,36 +1,45 @@
 import AddPatient from "../add patient/AddPatient"
 import Navbar from "../navbar/Navbar"
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react"
-import { Card, CardBody, Text } from "@chakra-ui/react"
+import { useSelector } from "react-redux"
+import { Card, CardBody, Text, Button, Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react"
+import { useDispatch } from "react-redux"
+import { deletePatient } from "../../redux/actions"
 
 
 const Patients = () => {
 
-  
   const patients = useSelector((state) => state.allPatients)
-  const storage = localStorage.setItem('patients', JSON.stringify(patients))
-  const storageData = localStorage.getItem('patients')
-  const parsedData = JSON.parse(storageData)
+  const dispatch = useDispatch()
+
+  const delPatient = (id) => {
+    dispatch(deletePatient(id))
+    console.log(id, 'aca id');
+  }
+
+  
 
   return (
+
     <div>
       <Navbar />
-      <div>
-        {parsedData && parsedData.length > 0 
-        ? ( parsedData?.map((pat, idx) => (
-          <Card>
-            <CardBody key={idx}>
-              <Text>{pat.name}</Text>
-              <Text>{pat.age}</Text>
-              <Text>{pat.symptoms}</Text>
-            </CardBody>
-          </Card>
-        ))) 
-        : (<p>no hay data</p>)}
-      </div>
+        <div>
+          {patients && patients.length > 0 
+          ? ( patients?.map((pat, id) => (
+            <Card w="sm" key={id}>
+              <CardBody>
+                <Text>{pat.name}</Text>
+                <Text>{pat.age}</Text>
+                <Text>{pat.symptoms}</Text>
+                <Button>Edit</Button>
+                <Button onClick={() => delPatient(id)}>Delete</Button>
+              </CardBody>
+            </Card>
+          ))) 
+          : (<p>no hay data</p>)}
+        </div>
       <AddPatient />
     </div>
+
   );
 };
 export default Patients
