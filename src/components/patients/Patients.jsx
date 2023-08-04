@@ -1,21 +1,24 @@
 import AddPatient from "../add patient/AddPatient"
 import Navbar from "../navbar/Navbar"
 import { useSelector } from "react-redux"
-import { Card, CardBody, Text, Button, Alert, AlertIcon, AlertTitle, AlertDescription, Box } from "@chakra-ui/react"
+import { Card, CardBody, Text, Button, Box } from "@chakra-ui/react"
 import { useDispatch } from "react-redux"
 import { deletePatient } from "../../redux/actions"
-
+import { useEffect } from "react"
 
 const Patients = () => {
 
   const patients = useSelector((state) => state.allPatients)
+  const storedData = localStorage.setItem("patients", JSON.stringify(patients))
   const dispatch = useDispatch()
 
   const delPatient = (id) => {
     dispatch(deletePatient(id))
   }
 
-  
+  useEffect(() => {
+    const showData = localStorage.getItem("patients")
+  }, [])
   
 
   return (
