@@ -41,9 +41,6 @@ const AddPatient = () => {
         setShowModal(true)
         return;
       }
-      //localstorage
-      storedPatient(user)
-
       dispatch(addUser(user))
       setUser({
           name: '',
