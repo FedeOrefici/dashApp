@@ -32,13 +32,13 @@ const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault()
     
-    user.name === 'admin' && user.password === 'admin' ? navigate("/home") : setShowMessage(true)
+    user.name === 'williams' && user.password === 'williams' ? navigate("/home") : setShowMessage(true)
 
   }
 
   useEffect(() => {
     if(showMessage){
-      let timeOut = setTimeout(() => {setShowMessage(false)}, 12000)
+      let timeOut = setTimeout(() => {setShowMessage(false)}, 2000)
       return () => clearTimeout(timeOut)
     }
   }, [showMessage])
@@ -58,6 +58,7 @@ const Login = () => {
             <Box border="1px" h="100px">
                 <label>pasword</label>
                 <Input onChange={handleChange} value={user.password} name="password" type="password" />
+                {error && <Text>{error.password}</Text>}
             </Box>
             <Button w="200px" mt="30px" onClick={handleLogin}>Login</Button>
           </Container>
