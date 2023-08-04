@@ -1,7 +1,7 @@
 import AddPatient from "../add patient/AddPatient"
 import Navbar from "../navbar/Navbar"
 import { useSelector } from "react-redux"
-import { Card, CardBody, Text, Button, Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react"
+import { Card, CardBody, Text, Button, Alert, AlertIcon, AlertTitle, AlertDescription, Box } from "@chakra-ui/react"
 import { useDispatch } from "react-redux"
 import { deletePatient } from "../../redux/actions"
 
@@ -16,6 +16,7 @@ const Patients = () => {
   }
 
   
+  
 
   return (
 
@@ -26,9 +27,18 @@ const Patients = () => {
           ? ( patients?.map((pat, id) => (
             <Card w="sm" bg="blue.100" key={id}>
               <CardBody>
-                <Text>{pat.name}</Text>
-                <Text>{pat.age}</Text>
-                <Text>{pat.symptoms}</Text>
+                <Box>
+                  <Text>Name</Text>
+                  <Text>{pat.name}</Text>
+                </Box>
+                <Box>
+                  <Text>Age</Text>
+                  <Text>{pat.age}</Text>
+                </Box>
+                <Box>
+                  <Text>Symptoms</Text>
+                  <Text>{pat.symptoms}</Text>
+                </Box>
                 <Button>Edit</Button>
                 <Button onClick={() => delPatient(id)}>Delete</Button>
               </CardBody>
