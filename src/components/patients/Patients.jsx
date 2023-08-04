@@ -4,22 +4,26 @@ import { useSelector } from "react-redux"
 import { Card, CardBody, Text, Button, Box } from "@chakra-ui/react"
 import { useDispatch } from "react-redux"
 import { deletePatient } from "../../redux/actions"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const Patients = () => {
 
   const patients = useSelector((state) => state.allPatients)
-  const storedData = localStorage.setItem("patients", JSON.stringify(patients))
-  const dispatch = useDispatch()
 
+  useEffect(() => {
+    localStorage.getItem("patients")
+  }, [patients])
+
+  useEffect(() => {
+    localStorage.setItem("patients", JSON.stringify(patients))
+  }, [patients])
+
+  const dispatch = useDispatch()
+  
   const delPatient = (id) => {
     dispatch(deletePatient(id))
   }
 
-  useEffect(() => {
-    const showData = localStorage.getItem("patients")
-  }, [])
-  
 
   return (
 
