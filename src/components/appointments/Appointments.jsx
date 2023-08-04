@@ -10,7 +10,6 @@ const Appointments = () => {
 
   const patients = useSelector((state) => state.allPatients)
   const appointData = useSelector((state) => state.appointments)
-  console.log(appointData, 'asdasda');
   const dispatch = useDispatch()
   const [showData, setShowData] = useState(false)
 
@@ -93,17 +92,17 @@ const Appointments = () => {
       <Alert w='300px' justifyContent="center" status="error"><AlertIcon />Incomplete fields</Alert>)
     ): (null)}
       
-      <TableContainer>
-        <Table>
-          <Thead>
-            <Tr>
-              <Th>name</Th>
-              <Th>date</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
             {appointData && appointData.length > 0 ? (
               appointData.map(app => (
+          <TableContainer>
+            <Table>
+              <Thead>
+                <Tr>
+                  <Th>name</Th>
+                  <Th>date</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
               <Tr>
                 <Td>{app.name}</Td>
                 <Td>{app.date}</Td>
@@ -111,11 +110,11 @@ const Appointments = () => {
                   <Button>delete</Button>
                 </Td>
               </Tr>
+              </Tbody>
+            </Table>
+          </TableContainer>
               ))
-            ) : ( <Text>no dates</Text> )}
-          </Tbody>
-        </Table>
-      </TableContainer>
+            ) : ( <Text>No appointments in your list</Text> )}
 
     </div>
   )
