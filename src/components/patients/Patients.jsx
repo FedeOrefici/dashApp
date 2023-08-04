@@ -13,7 +13,6 @@ const Patients = () => {
 
   const delPatient = (id) => {
     dispatch(deletePatient(id))
-    console.log(id, 'aca id');
   }
 
   
@@ -25,7 +24,7 @@ const Patients = () => {
         <div>
           {patients && patients.length > 0 
           ? ( patients?.map((pat, id) => (
-            <Card w="sm" key={id}>
+            <Card w="sm" bg="blue.100" key={id}>
               <CardBody>
                 <Text>{pat.name}</Text>
                 <Text>{pat.age}</Text>
@@ -35,7 +34,7 @@ const Patients = () => {
               </CardBody>
             </Card>
           ))) 
-          : (<p>no hay data</p>)}
+          : (<Text>no patients on your list</Text>)}
         </div>
       <AddPatient />
     </div>

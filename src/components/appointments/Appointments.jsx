@@ -62,7 +62,6 @@ const Appointments = () => {
   return (
     <div>
     <Navbar />
-    <p>add an appointment</p>
     <form onSubmit={handleSubmit}>
       <FormControl>
         <Container>
@@ -88,9 +87,7 @@ const Appointments = () => {
     {showData && (
       <Alert w='300px' justifyContent="center" status='success'><AlertIcon />Appointment created</Alert>
     )}
-    {Object.keys(errors).length > 0 ? (!showData && (
-      <Alert w='300px' justifyContent="center" status="error"><AlertIcon />Incomplete fields</Alert>)
-    ): (null)}
+    
       
             {appointData && appointData.length > 0 ? (
               appointData.map(app => (
@@ -114,7 +111,7 @@ const Appointments = () => {
             </Table>
           </TableContainer>
               ))
-            ) : ( <Text>No appointments in your list</Text> )}
+            ) : ( <Text>No appointments on your list</Text> )}
 
     </div>
   )
