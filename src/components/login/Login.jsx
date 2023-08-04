@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Alert, AlertIcon } from "@chakra-ui/react"
-
+import { Alert, AlertIcon, Box, Button, Container, Input, Text } from "@chakra-ui/react"
+import validationLogin from "./validation"
 
 const Login = () => {
 
@@ -23,17 +23,22 @@ const Login = () => {
       ...user,
       [event.target.name]: event.target.value
     })
+    setError(validationLogin({
+      ...user,
+      [event.target.name]: event.target.value
+    }))
   }
 
   const handleLogin = (event) => {
     event.preventDefault()
-    user.name === 'admin' && user.password === 'admin' ? navigate("/home") : setShowMessage(true)
     
+    user.name === 'admin' && user.password === 'admin' ? navigate("/home") : setShowMessage(true)
+
   }
 
   useEffect(() => {
     if(showMessage){
-      let timeOut = setTimeout(() => {setShowMessage(false)}, 2000)
+      let timeOut = setTimeout(() => {setShowMessage(false)}, 12000)
       return () => clearTimeout(timeOut)
     }
   }, [showMessage])
@@ -42,20 +47,23 @@ const Login = () => {
 
 
   return (
-    <div>
+    <Container bg="blue.900">
         <form>
-        {showMessage && <Alert w='300px' status='error'><AlertIcon />Incomplete Fields</Alert>}
-            <div>
+          <Container display="flex" justifyContent="center" flexDirection="column">
+            <Box border="1px" h="100px">
                 <label>name</label>
-                <input onChange={handleChange} value={user.name} name="name" type="text" />
-            </div>
-            <div>
+                <Input onChange={handleChange} value={user.name} name="name" type="text" />
+                {error && <Text>{error.name}</Text>}
+            </Box>
+            <Box border="1px" h="100px">
                 <label>pasword</label>
-                <input onChange={handleChange} value={user.password} name="password" type="password" />
-            </div>
-            <button onClick={handleLogin}>Login</button>
+                <Input onChange={handleChange} value={user.password} name="password" type="password" />
+            </Box>
+            <Button w="200px" mt="30px" onClick={handleLogin}>Login</Button>
+          </Container>
         </form>
-    </div>
+        {showMessage && <Alert w='300px' status='error' rounded="sm"><AlertIcon />Incomplete Fields</Alert>}
+    </Container>
   )
 }
 

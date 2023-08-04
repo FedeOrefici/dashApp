@@ -4,9 +4,11 @@ const validationLogin = (user) => {
     if(!user.name){
         errors.name = 'Required'
     }
-    if(!users.password){
+    if(!user.password){
         errors.password = 'Required'
     }
     
     return errors;
 }
+
+export default validationLogin;

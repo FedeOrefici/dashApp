@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { useState } from "react"
-import { Button, Alert,  AlertIcon,  AlertTitle,  AlertDescription, } from "@chakra-ui/react"
+import { Button, Alert,  AlertIcon,  AlertTitle,  AlertDescription } from "@chakra-ui/react"
 import { addUser } from "../../redux/actions"
 
 
@@ -24,7 +24,6 @@ const AddPatient = () => {
       const handleSubmit = (event) => {
         event.preventDefault()
         dispatch(addUser(user))
-        console.log(user, 'user sending....');
         setUser({
             name: '',
             age: '',
