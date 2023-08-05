@@ -13,19 +13,21 @@ const AddPatient = () => {
     const [user, setUser] =  useState({
         name: '',
         age: '',
+        gender: '',
         symptoms: ''
       })
 
     const [errors, setErrors] = useState({
       name: '',
       age: '',
+      gender: '',
       symptoms: ''
     })
       
     const handleChange = (event) => {
       setUser({
         ...user,
-        [event.target.name]: event.target.value
+        [event.target.name]: event.target.name === 'age' ? +event.target.value : event.target.value
       })
       setErrors(validationsPatients({
         ...user,
@@ -35,6 +37,11 @@ const AddPatient = () => {
     
     const handleSubmit = (event) => {
       event.preventDefault()
+      const ageValue = parseInt(user.age, 10)
+      if(isNaN(ageValue)){
+        setShowModal(true)
+        return;
+      }
       const errors = validationsPatients(user)
       if(Object.keys(errors).length > 0){
         setShowModal(true)
@@ -44,6 +51,7 @@ const AddPatient = () => {
       setUser({
           name: '',
           age: '',
+          gender: '',
           symptoms: ''
       })
     }
@@ -66,6 +74,15 @@ const AddPatient = () => {
                 <label>age</label>
                 <input name="age" value={user.age} onChange={handleChange} type="number" />
                 {errors && <Text>{errors.age}</Text>}
+            </div>
+            <div>
+                <label>gender</label>
+                <select name="gender" value={user.gender} onChange={handleChange} type="text">
+                  <option>select a genre</option>
+                  <option>female</option>
+                  <option>male</option>
+                </select>
+                {errors && <Text>{errors.gender}</Text>}
             </div>
             <div>
                 <label>symptoms</label>
