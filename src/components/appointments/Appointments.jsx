@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addAppointments } from "../../redux/actions"
 import validationAppointments from "./validations"
-
+import { deleteAppointment } from "../../redux/actions"
 
 const Appointments = () => {
 
@@ -57,6 +57,9 @@ const Appointments = () => {
     }
   }, [showData])
 
+  const handleDelete = (id) => {
+    dispatch(deleteAppointment(id))
+  }
 
 
   return (
@@ -90,7 +93,7 @@ const Appointments = () => {
     
       
             {appointData && appointData.length > 0 ? (
-              appointData.map(app => (
+              appointData.map((app, id) => (
           <TableContainer>
             <Table>
               <Thead>
@@ -104,7 +107,8 @@ const Appointments = () => {
                 <Td>{app.name}</Td>
                 <Td>{app.date}</Td>
                 <Td>
-                  <Button>delete</Button>
+                  <Button onClick={() => handleDelete(id)}>delete</Button>
+                  <Button>edit</Button>
                 </Td>
               </Tr>
               </Tbody>

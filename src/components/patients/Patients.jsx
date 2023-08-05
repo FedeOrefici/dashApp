@@ -11,7 +11,6 @@ const Patients = () => {
   const [initialPatient, setInitialPatient] = useState([])
   const patients = useSelector((state) => state.allPatients)
 
- 
 
   useEffect(() => {
     const storedPatients = JSON.parse(localStorage.getItem("patients"))
