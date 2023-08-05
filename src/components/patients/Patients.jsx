@@ -4,7 +4,8 @@ import { useSelector } from "react-redux"
 import { Card, CardBody, Text, Button, Box } from "@chakra-ui/react"
 import { useDispatch } from "react-redux"
 import { deletePatient } from "../../redux/actions"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { RadialBarChart, Legend, Tooltip, RadialBar } from "recharts"
 
 const Patients = () => {
 
@@ -57,7 +58,23 @@ const Patients = () => {
           : (<Text>no patients on your list</Text>)}
         </div>
       <AddPatient />
+      <div style={{width:'100%', height:'400px'}}>
+        <RadialBarChart 
+        width={730} 
+        height={250} 
+        innerRadius="10%" 
+        outerRadius="80%" 
+        data={patients} 
+        startAngle={180} 
+        endAngle={0}
+      >
+        <RadialBar minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='uv' />
+        <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" />
+        <Tooltip />
+      </RadialBarChart>
+        </div>
     </div>
+    
 
   );
 };
