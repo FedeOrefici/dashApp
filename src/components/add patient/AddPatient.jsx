@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import { Button, Alert,  AlertIcon,  AlertTitle,  AlertDescription, Text, FormControl } from "@chakra-ui/react"
 import { addUser } from "../../redux/actions"
 import validationsPatients from "./validations"
-import { storedPatient } from "../utils/local.storage"
 
 
 const AddPatient = () => {
