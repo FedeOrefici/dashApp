@@ -12,7 +12,6 @@ const Patients = () => {
 
   useEffect(() => {
     const storedPatients = JSON.parse(localStorage.getItem("patients"))
-    
   }, [])
 
   useEffect(() => {
@@ -41,6 +40,10 @@ const Patients = () => {
                 <Box>
                   <Text>Age</Text>
                   <Text>{pat.age}</Text>
+                </Box>
+                <Box>
+                  <Text>gender</Text>
+                  <Text>{pat.gender}</Text>
                 </Box>
                 <Box>
                   <Text>Symptoms</Text>

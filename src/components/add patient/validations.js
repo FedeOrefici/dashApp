@@ -6,6 +6,9 @@ const validationsPatients = (user) => {
     if(!user.age){
         errors.age = 'Required'
     }
+    if(!user.gender){
+        errors.gender = 'Required'
+    }
     if(!user.symptoms){
         errors.symptoms = 'Required'
     }
