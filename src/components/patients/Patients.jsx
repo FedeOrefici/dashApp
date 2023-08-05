@@ -8,12 +8,11 @@ import { useEffect, useState } from "react"
 
 const Patients = () => {
 
-  const [initialPatient, setInitialPatient] = useState([])
   const patients = useSelector((state) => state.allPatients)
-
 
   useEffect(() => {
     const storedPatients = JSON.parse(localStorage.getItem("patients"))
+    
   }, [])
 
   useEffect(() => {
@@ -25,9 +24,6 @@ const Patients = () => {
   const delPatient = (id) => {
     dispatch(deletePatient(id))
   }
-
-
-
 
   return (
 
