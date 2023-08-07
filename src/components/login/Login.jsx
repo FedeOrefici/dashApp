@@ -32,7 +32,7 @@ const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault()
     
-    user.name === 'williams' && user.password === 'williams' ? navigate("/home") : setShowMessage(true)
+    user.name === 'doctor' && user.password === 'doctor' ? navigate("/home") : setShowMessage(true)
 
   }
 

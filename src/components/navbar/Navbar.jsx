@@ -8,7 +8,7 @@ const Navbar = () => {
     <TabList p="30px" display="flex" alignItems="center" justifyContent="center">
       <Box display="flex" alignItems="center" bg="pink.100" w="300px" rounded="base" h="70px" justifyContent="space-evenly" gap="10px">
         <Avatar w="50px" h="50px" src={profile} />
-        <Text>Dr. Williams</Text>
+        <Text>Dr. Doctor</Text>
       </Box>
       <Box display="flex" alignItems="center" justifyContent="space-around" w="2xl" h="70px">
         <NavLink to="/home"><Tab>home</Tab></NavLink>
