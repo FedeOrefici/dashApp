@@ -1,7 +1,6 @@
 import AddPatient from "../add patient/AddPatient"
 import Navbar from "../navbar/Navbar"
 import { useSelector } from "react-redux"
-import { Card, CardBody, Text, Button, Box } from "@chakra-ui/react"
 import { useDispatch } from "react-redux"
 import { deletePatient, getData } from "../../redux/actions"
 import { useEffect } from "react"
@@ -28,30 +27,30 @@ const Patients = () => {
         <div>
           {patients && patients.length > 0 
           ? ( patients?.map((pat, id) => (
-            <Card w="sm" bg="blue.100" key={id}>
-              <CardBody>
-                <Box>
-                  <Text>Name</Text>
-                  <Text>{pat.name}</Text>
-                </Box>
-                <Box>
-                  <Text>Age</Text>
-                  <Text>{pat.age}</Text>
-                </Box>
-                <Box>
-                  <Text>gender</Text>
-                  <Text>{pat.gender}</Text>
-                </Box>
-                <Box>
-                  <Text>Symptoms</Text>
-                  <Text>{pat.symptoms}</Text>
-                </Box>
-                <Button>Edit</Button>
-                <Button onClick={() => delPatient(id)}>Delete</Button>
-              </CardBody>
-            </Card>
+            <div key={id}>
+              <div>
+                <div>
+                  <p>Name</p>
+                  <p>{pat.name}</p>
+                </div>
+                <div>
+                  <p>Age</p>
+                  <p>{pat.age}</p>
+                </div>
+                <div>
+                  <p>gender</p>
+                  <p>{pat.gender}</p>
+                </div>
+                <div>
+                  <p>Symptoms</p>
+                  <p>{pat.symptoms}</p>
+                </div>
+                <button>Edit</button>
+                <button onClick={() => delPatient(id)}>Delete</button>
+              </div>
+            </div>
           ))) 
-          : (<Text>no patients on your list</Text>)}
+          : (<p>no patients on your list</p>)}
         </div>
       <AddPatient />
       <div style={{width:'100%', height:'400px'}}>

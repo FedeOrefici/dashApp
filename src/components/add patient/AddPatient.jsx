@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
-import { Button, Alert,  AlertIcon,  AlertTitle,  AlertDescription, Text, FormControl } from "@chakra-ui/react"
 import { addUser } from "../../redux/actions"
 import validationsPatients from "./validations"
 
@@ -72,16 +71,16 @@ const AddPatient = () => {
   return (
     <div>
         <form onSubmit={handleSubmit}>
-          <FormControl>
+          <div>
             <div>
                 <label>name</label>
                 <input name="name" value={user.name} onChange={handleChange} type="text" />
-                {errors && <Text>{errors.name}</Text>}
+                {errors && <p>{errors.name}</p>}
             </div>
             <div>
                 <label>age</label>
                 <input name="age" value={user.age} onChange={handleChange} type="number" />
-                {errors && <Text>{errors.age}</Text>}
+                {errors && <p>{errors.age}</p>}
             </div>
             <div>
                 <label>gender</label>
@@ -90,16 +89,16 @@ const AddPatient = () => {
                   <option>female</option>
                   <option>male</option>
                 </select>
-                {errors && <Text>{errors.gender}</Text>}
+                {errors && <p>{errors.gender}</p>}
             </div>
             <div>
                 <label>symptoms</label>
                 <textarea name="symptoms" value={user.symptoms} onChange={handleChange}/>
-                {errors && <Text>{errors.symptoms}</Text>}
+                {errors && <p>{errors.symptoms}</p>}
             </div>
-          <Button type="submit">add patient</Button>
-          {showModal && (<Alert w='300px' status='error' rounded="base"><AlertIcon />Empty fields</Alert>)}
-          </FormControl>
+          <button type="submit">add patient</button>
+          {showModal && (<div>Empty fields</div>)}
+          </div>
         </form>
     </div>
   )
