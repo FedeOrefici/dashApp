@@ -43,7 +43,7 @@
     width: 400px;
     border: none;
     padding: 10px;
-    background-color: #F4F4F4;
+    background-color: #e6e6e6;
 }
 
 .modal-message {
@@ -71,4 +71,5 @@
     background-color: #6D6AFE;
     border: none;
     color: white;
+    cursor: pointer;
 }

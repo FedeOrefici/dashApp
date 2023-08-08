@@ -31,10 +31,8 @@ const Login = () => {
   }
 
   const handleLogin = (event) => {
-    event.preventDefault()
-    
+    event.preventDefault()  
     user.name === 'doctor' && user.password === 'doctor' ? navigate("/patients") : setShowMessage(true)
-
   }
 
   useEffect(() => {
@@ -67,7 +65,6 @@ const Login = () => {
           <span class="material-symbols-outlined">medication</span>
         </div>
     </div>
-
     <div style={{backgroundImage: `url(${back})`, backgroundSize:'cover', backgroundRepeat: 'no-repeat', width: '100vh', height: '100vh'}}>
     </div>
     </div>
