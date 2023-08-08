@@ -47,6 +47,14 @@ const AddPatient = () => {
         setShowModal(true)
         return;
       }
+      const data = JSON.parse(localStorage.getItem('patients')) ??  []
+      
+      data.push(user)
+      localStorage.setItem("patients", JSON.stringify(data))
+      
+      console.log(data, 'adasdadadadasda');
+      
+   
       dispatch(addUser(user))
       setUser({
           name: '',

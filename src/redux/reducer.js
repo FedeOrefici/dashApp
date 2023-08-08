@@ -1,4 +1,4 @@
-import { ADD_APPOINTMENTS, ADD_PATIENTS, DELETE_PATIENTS, DEL_APPOINTMENTS } from "./actionTypes"
+import { ADD_APPOINTMENTS, ADD_PATIENTS, DELETE_PATIENTS, DEL_APPOINTMENTS, GET_DATA } from "./actionTypes"
 
 let initialState = {
     allPatients : [],
@@ -32,6 +32,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 appointments: filterApp
+            }
+        
+        case GET_DATA:
+            return {
+                ...state,
+                allPatients: action.payload
             }
 
         default: 

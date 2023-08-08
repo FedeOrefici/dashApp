@@ -5,4 +5,7 @@ import rootReducer from "./reducer";
 const componseEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 const store = createStore(rootReducer, componseEnhancer(applyMiddleware(thunk)))
 
+console.log(store.getState());
+
+
 export default store;

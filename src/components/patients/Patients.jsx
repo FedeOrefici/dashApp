@@ -3,23 +3,19 @@ import Navbar from "../navbar/Navbar"
 import { useSelector } from "react-redux"
 import { Card, CardBody, Text, Button, Box } from "@chakra-ui/react"
 import { useDispatch } from "react-redux"
-import { deletePatient } from "../../redux/actions"
+import { deletePatient, getData } from "../../redux/actions"
 import { useEffect } from "react"
 import { RadialBarChart, Legend, Tooltip, RadialBar } from "recharts"
 
 const Patients = () => {
 
-  const patients = useSelector((state) => state.allPatients)
+  const dispatch = useDispatch()
+  const patients =  useSelector((state) => state.allPatients)
 
   useEffect(() => {
     const storedPatients = JSON.parse(localStorage.getItem("patients"))
+    dispatch(getData(storedPatients))
   }, [])
-
-  useEffect(() => {
-    localStorage.setItem("patients", JSON.stringify(patients))
-  }, [patients])
-
-  const dispatch = useDispatch()
   
   const delPatient = (id) => {
     dispatch(deletePatient(id))
