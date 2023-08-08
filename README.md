@@ -1,4 +1,4 @@
-Application for doctors (In process). stack: React, Redux, React Router Dom, Recharts, Chakra UI.
+Application for doctors (In process). stack: React, Redux, React Router Dom, Recharts, Tailwind.
 ---------------------------------------------------------------------
 Login
 ![image](https://github.com/FedeOrefici/dashApp/assets/86120837/5b6a2a2b-af42-4b74-a7a5-172b0ce760de)
