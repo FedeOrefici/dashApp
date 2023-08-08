@@ -16,6 +16,9 @@ const rootReducer = (state = initialState, action) => {
 
         case DELETE_PATIENTS:
             const updateUser = state.allPatients.filter((_, idx) => idx !== action.payload)
+            const updateLocalStorage = JSON.parse(localStorage.getItem('patients'))
+            const updateStorage = updateLocalStorage.filter((_, idx) => idx !== action.payload)
+            localStorage.setItem('patients', JSON.stringify(updateStorage))
             return {
                 ...state,
                 allPatients: updateUser

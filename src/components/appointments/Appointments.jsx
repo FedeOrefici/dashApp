@@ -75,19 +75,19 @@ const Appointments = () => {
                 <option>{pat.name}</option>
               )}
             </select>
-            {errors && <Text>{errors.name}</Text>}
+            {errors && <p>{errors.name}</p>}
           </div>
           <div>
             <p>Select a date</p>
             <input name="date" value={appointment.date} onChange={handleEvent} type="date" />
-            {errors && <Text>{errors.date}</Text>}
+            {errors && <p>{errors.date}</p>}
           </div>
           <button type="submit">confirm</button>
         </div>
       </div>
     </form>
     {showData && (
-      <Alert w='300px' justifyContent="center" status='success'><AlertIcon />Appointment created</Alert>
+      <p w='300px' justifyContent="center" status='success'><AlertIcon />Appointment created</p>
     )}
     
       

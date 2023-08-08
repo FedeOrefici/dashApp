@@ -2,8 +2,7 @@ import { NavLink } from "react-router-dom"
 import profile from '../../assets/doc.jpg'
 
 const Navbar = () => {
-  return (
-    <>
+  return ( 
     <div>
       <div>
         <img src={profile} />
@@ -16,7 +15,6 @@ const Navbar = () => {
         <NavLink to="/"><p>logout</p></NavLink>
       </div>
     </div>
-  </>
   )
 }
 
