@@ -1,5 +1,4 @@
 import Navbar from "../navbar/Navbar"
-import { FormHelperText, Input, Container, Box, Select, Button, FormControl, Table, Alert, AlertIcon, TableContainer, Thead, Th, Tr, Tbody, Td, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addAppointments } from "../../redux/actions"
@@ -66,26 +65,26 @@ const Appointments = () => {
     <div>
     <Navbar />
     <form onSubmit={handleSubmit}>
-      <FormControl>
-        <Container>
-          <Box>
-            <FormHelperText>Insert a patient</FormHelperText>
-            <Select name="name" value={appointment.name} onChange={handleEvent}>
+      <div>
+        <div>
+          <div>
+            <p>Insert a patient</p>
+            <select name="name" value={appointment.name} onChange={handleEvent}>
                 <option selected>Select a patient</option>
               {patients.map(pat =>
                 <option>{pat.name}</option>
               )}
-            </Select>
+            </select>
             {errors && <Text>{errors.name}</Text>}
-          </Box>
-          <Box>
-            <FormHelperText>Select a date</FormHelperText>
-            <Input name="date" value={appointment.date} onChange={handleEvent} type="date" />
+          </div>
+          <div>
+            <p>Select a date</p>
+            <input name="date" value={appointment.date} onChange={handleEvent} type="date" />
             {errors && <Text>{errors.date}</Text>}
-          </Box>
-          <Button type="submit">confirm</Button>
-        </Container>
-      </FormControl>
+          </div>
+          <button type="submit">confirm</button>
+        </div>
+      </div>
     </form>
     {showData && (
       <Alert w='300px' justifyContent="center" status='success'><AlertIcon />Appointment created</Alert>
@@ -94,28 +93,28 @@ const Appointments = () => {
       
             {appointData && appointData.length > 0 ? (
               appointData.map((app, id) => (
-          <TableContainer>
-            <Table>
-              <Thead>
-                <Tr>
-                  <Th>name</Th>
-                  <Th>date</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-              <Tr>
-                <Td>{app.name}</Td>
-                <Td>{app.date}</Td>
-                <Td>
-                  <Button onClick={() => handleDelete(id)}>delete</Button>
-                  <Button>edit</Button>
-                </Td>
-              </Tr>
-              </Tbody>
-            </Table>
-          </TableContainer>
+          <table>
+      
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>date</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>{app.name}</td>
+                <td>{app.date}</td>
+                <td>
+                  <button onClick={() => handleDelete(id)}>delete</button>
+                  <button>edit</button>
+                </td>
+              </tr>
+              </tbody>
+          
+          </table>
               ))
-            ) : ( <Text>No appointments on your list</Text> )}
+            ) : ( <p>No appointments on your list</p> )}
 
     </div>
   )
