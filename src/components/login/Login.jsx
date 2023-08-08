@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import validationLogin from "./validation"
 import back from '../../assets/index.jpg'
-
+import './login.css'
 
 const Login = () => {
 
@@ -47,34 +47,28 @@ const Login = () => {
 
   return (
 
-    <div> 
-    <div>
-        <form>
-          <div>
-            <div>
-                <label>name</label>
-                <input onChange={handleChange} value={user.name} name="name" type="text" />
-                {error && <p>{error.name}</p>}
+    <div className="container"> 
+    <div className="container-form">
+        {showMessage && <p className="modal-message">Incomplete Fields</p>}
+        <form className="form">
+          <div className="cont-div">
+            <div className="input-err">
+                <input className="input-form" placeholder="name..." onChange={handleChange} value={user.name} name="name" type="text" />
+                {error && <p style={{color:'red'}}>{error.name}</p>}
             </div>
-            <div h="100px">
-                <label>pasword</label>
-                <input onChange={handleChange} value={user.password} name="password" type="password" />
-                {error && <p>{error.password}</p>}
+            <div className="input-err">
+                <input className="input-form" placeholder="password..." onChange={handleChange} value={user.password} name="password" type="password" />
+                {error && <p style={{color:'red'}}>{error.password}</p>}
             </div>
-            <button onClick={handleLogin}>Login</button>
+            <button className="btn" onClick={handleLogin}>Login</button>
           </div>
         </form>
-        {showMessage && <p>Incomplete Fields</p>}
+        <div style={{color:'#6D6AFE'}}>
+          <span class="material-symbols-outlined">medication</span>
+        </div>
     </div>
 
-    <div style={{backgroundImage: `url(${back})`,
-      backgroundSize:'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'right',
-      width: '100vh',
-      height: '100vh',
-      marginLeft: 'auto'
-      }}>
+    <div style={{backgroundImage: `url(${back})`, backgroundSize:'cover', backgroundRepeat: 'no-repeat', width: '100vh', height: '100vh'}}>
     </div>
     </div>
   )
