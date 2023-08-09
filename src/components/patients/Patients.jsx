@@ -53,13 +53,16 @@ const Patients = () => {
                     <div className="border w-full px-2 h-2/3">
                       <p>{pat.symptoms}</p>
                     </div>                   
-                    <div className="flex items-center justify-end text-white gap-5 border w-full h-1/3">
-                      <div className="border w-2/3 px-2">
-                        <span class="material-symbols-outlined" style={{color:'black'}}>calendar_today</span>
-                        {appointments
-                        .filter(date => date.name === pat.name)
-                        .map((date, idx) => <p key={idx} className="text-black">{date.date}</p>)
-                        }
+                    <div className="flex text-white gap-5 border w-full h-1/3">
+                      <div className="w-2/3 px-2 flex border items-center justify-center gap-4">
+                        <span class="material-symbols-outlined" style={{color:'green'}}>calendar_today</span>
+                        {appointments && appointments.some(date => date.name === pat.name) ? (
+                        appointments
+                          .filter(date => date.name === pat.name)
+                          .map((date, idx) => <p key={idx} className="text-black">{date.date}</p>)
+                        ) : (
+                          <p className="text-black">no appointments for this patient</p>
+                        )}
                       </div>
                       <div className="flex gap-4 w-1/3 items-center justify-center">
                         <button className="bg-blue-600 w-[30px] h-[30px] rounded cursor-pointer flex items-center justify-center">
