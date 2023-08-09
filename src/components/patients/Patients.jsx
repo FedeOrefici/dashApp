@@ -4,7 +4,6 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { deletePatient, getData } from "../../redux/actions"
 import { useEffect } from "react"
-import { RadialBarChart, Legend, Tooltip, RadialBar } from "recharts"
 
 const Patients = () => {
 
@@ -22,12 +21,14 @@ const Patients = () => {
 
   return (
 
-    <div>
+    <>
       <Navbar />
-        <div>
+      <div className="flex">
+        <AddPatient />
+        <div className="bg-gray-200 w-1/2 flex flex-col items-center p-4 h-screen overflow-y-auto">
           {patients && patients.length > 0 
           ? ( patients?.map((pat, id) => (
-            <div key={id}>
+            <div className="bg-gray-600 w-[80%] rounded" key={id}>
               <div>
                 <div>
                   <p>Name</p>
@@ -52,23 +53,8 @@ const Patients = () => {
           ))) 
           : (<p>no patients on your list</p>)}
         </div>
-      <AddPatient />
-      <div style={{width:'100%', height:'400px'}}>
-        <RadialBarChart 
-        width={730} 
-        height={250} 
-        innerRadius="10%" 
-        outerRadius="80%" 
-        data={patients} 
-        startAngle={180} 
-        endAngle={0}
-      >
-        <RadialBar minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='uv' />
-        <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" />
-        <Tooltip />
-      </RadialBarChart>
-        </div>
-    </div>
+      </div>
+    </>
     
 
   );

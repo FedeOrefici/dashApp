@@ -87,12 +87,10 @@ const Appointments = () => {
       </div>
     </form>
     {showData && (
-      <p w='300px' justifyContent="center" status='success'><AlertIcon />Appointment created</p>
+      <p w='300px' justifyContent="center" status='success'>Appointment created</p>
     )}
-    
-      
-            {appointData && appointData.length > 0 ? (
-              appointData.map((app, id) => (
+    {appointData && appointData.length > 0 ? (
+      appointData.map((app, id) => (
           <table>
       
               <thead>
