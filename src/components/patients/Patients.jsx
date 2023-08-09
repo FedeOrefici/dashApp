@@ -10,8 +10,6 @@ const Patients = () => {
   const dispatch = useDispatch()
   const patients =  useSelector((state) => state.allPatients)
   const appointments = useSelector((user) => user.appointments)
-  console.log(appointments)
-
 
   useEffect(() => {
     const storedPatients = JSON.parse(localStorage.getItem("patients"))
@@ -23,9 +21,7 @@ const Patients = () => {
   }
  
 
-
   return (
-
     <>
       <Navbar />
       <div className="flex">
@@ -74,7 +70,7 @@ const Patients = () => {
                       </div>
                     </div>
                 </div>
-
+                
                 </div>
             </div>
           ))) 
