@@ -62,59 +62,66 @@ const Appointments = () => {
 
 
   return (
-    <div>
+    <>
     <Navbar />
-    <form onSubmit={handleSubmit}>
-      <div>
-        <div>
-          <div>
-            <p>Insert a patient</p>
-            <select name="name" value={appointment.name} onChange={handleEvent}>
-                <option selected>Select a patient</option>
-              {patients.map(pat =>
-                <option>{pat.name}</option>
-              )}
-            </select>
-            {errors && <p>{errors.name}</p>}
+    <div className="flex w-full">
+      <form className="w-2/5 bg-slate-100 shadow-lg h-screen flex flex-col items-center justify-around min-w-1/4" onSubmit={handleSubmit}>
+        <div className="w-full flex flex-col px-4">
+          <div className="w-full h-full flex items-center justify-center flex-col">
+            <div className="w-2/3 mx-auto h-[120px] flex justify-center flex-col">
+              <p className="text-[11px] text-gray-500">Insert a patient</p>
+              <select className="p-2" name="name" value={appointment.name} onChange={handleEvent}>
+                  <option selected>Select a patient</option>
+                {patients.map(pat =>
+                  <option>{pat.name}</option>
+                )}
+              </select>
+              {errors && <p className="h-[30px] text-red-600 py-2">{errors.name}</p>}
+            </div>
+            <div className="flex h-[120px] flex-col justify-center w-2/3 mx-auto">
+              <p className="text-[11px] text-gray-500">Select a date</p>
+              <input className="p-2" name="date" value={appointment.date} onChange={handleEvent} type="date" />
+              {errors && <p className="h-[30px] text-red-600 py-2">{errors.date}</p>}
+            </div>
+            <div className="flex items-center justify-center w-full">
+              <button className="bg-[#6D6AFE] w-2/3 hover:bg-[#4C49BB] py-2 rounded text-white shadow-lg" type="submit">confirm</button>
+            </div>
           </div>
-          <div>
-            <p>Select a date</p>
-            <input name="date" value={appointment.date} onChange={handleEvent} type="date" />
-            {errors && <p>{errors.date}</p>}
-          </div>
-          <button type="submit">confirm</button>
         </div>
+        <div className="flex gap-2">
+          <p>add a new</p>
+          <span className="text-[#6D6AFE] italic font-bold">appointment</span>
+        </div>
+        {showData && (
+          <p className="bg-green-600 py-2 w-[200px] rounded text-white absolute bottom-[300px] text-center">Appointment created</p>
+        )}
+      </form>
+
+
+      <div className="w-full flex flex-col gap-2 max-h-screen overflow-y-auto p-4">  
+        {appointData && appointData.length > 0 ? (
+          appointData.map((app, id) => (
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="flex w-2/4 rounded shadow-md gap-10 p-2 items-center justify-center bg-slate-100 h-[100px]">
+                      <p>{app.name}</p>
+                      <p>{app.date}</p>
+                      <div className="flex ">
+                        <button className="bg-red-600 py-2 w-[100px] rounded text-white hover:bg-red-700" onClick={() => handleDelete(id)}>delete</button>
+                        <button className="bg-blue-600 py-2 w-[100px] rounded text-white hover:bg-blue-700">edit</button>
+                      </div>
+                    </div>
+                  </div>
+                  ))
+                ) : ( 
+                <div className="flex flex-col mx-auto items-center justify-center">
+                  <p className="text-2xl font-bold text-[#6D6AFE]">No appointments on your list</p>
+                  <p className="italic font-medium1">add your appointments</p>
+                </div>
+              )}
       </div>
-    </form>
-    {showData && (
-      <p w='300px' justifyContent="center" status='success'>Appointment created</p>
-    )}
-    {appointData && appointData.length > 0 ? (
-      appointData.map((app, id) => (
-          <table>
-      
-              <thead>
-                <tr>
-                  <th>name</th>
-                  <th>date</th>
-                </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>{app.name}</td>
-                <td>{app.date}</td>
-                <td>
-                  <button onClick={() => handleDelete(id)}>delete</button>
-                  <button>edit</button>
-                </td>
-              </tr>
-              </tbody>
-          
-          </table>
-              ))
-            ) : ( <p>No appointments on your list</p> )}
 
     </div>
+    </>
   )
 }
 
