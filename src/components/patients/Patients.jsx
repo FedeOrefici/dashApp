@@ -25,7 +25,7 @@ const Patients = () => {
       <Navbar />
       <div className="flex">
         <AddPatient />
-        <div className="bg-gray-200 w-1/2 flex flex-col items-center p-4 h-screen overflow-y-auto">
+        <div className="w-1/2 flex flex-col items-center p-4 h-screen overflow-y-auto">
           {patients && patients.length > 0 
           ? ( patients?.map((pat, id) => (
             <div className="bg-gray-600 w-[80%] rounded" key={id}>
@@ -51,7 +51,12 @@ const Patients = () => {
               </div>
             </div>
           ))) 
-          : (<p>no patients on your list</p>)}
+          : (
+            <div className="flex flex-col w-full h-screen items-center justify-center">
+              <p className="text-2xl font-bold text-[#6D6AFE]">No patients on your list</p>
+              <p className="italic font-medium">add your patients</p>
+            </div>
+              )}
         </div>
       </div>
     </>
