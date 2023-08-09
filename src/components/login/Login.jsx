@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import validationLogin from "./validation"
 import back from '../../assets/index.jpg'
-import './login.css'
+
+
 
 const Login = () => {
 
@@ -45,28 +46,33 @@ const Login = () => {
 
   return (
 
-    <div className="container"> 
-    <div className="container-form">
-        {showMessage && <p className="modal-message">Incomplete Fields</p>}
-        <form className="form">
-          <div className="cont-div">
-            <div className="input-err">
-                <input className="input-form" placeholder="name..." onChange={handleChange} value={user.name} name="name" type="text" />
-                {error && <p style={{color:'red'}}>{error.name}</p>}
+    <div className="flex h-screen w-full"> 
+          <div className="w-1/2 flex items-center justify-around flex-col">
+            <form className="w-1/2 h-[80%] flex items-center justify-center flex-col">
+
+                <div className="h-[120px] w-full flex flex-col p-2 justify-center">
+                    <input className="w-full h-[50px] pl-2 border bg-gray-100" placeholder="name..." onChange={handleChange} value={user.name} name="name" type="text" />
+                    {error && <p className="text-red-600 py-2">{error.name}</p>}
+                </div>
+
+                <div className="h-[120px] w-full flex flex-col px-2 justify-center">
+                    <input className="w-full h-[50px] pl-2 border bg-gray-100" placeholder="password..." onChange={handleChange} value={user.password} name="password" type="password" />
+                    {error && <p className="text-red-600 py-2">{error.password}</p>}
+                </div>
+                <div className="flex flex-col items-center justify-center h-[250px] mt-10 w-full gap-5">
+                  <button className="bg-[#6D6AFE] rounded text-white shadow-lg w-[300px] h-[50px] abosulute" onClick={handleLogin}>Login</button>
+                  {showMessage && <p className="bg-red-600 w-[300px] rounded h-[50px] text-white px-2 flex justify-center items-center">Incomplete Fields</p>} 
+                </div>
+            </form>
+            <div style={{color:'#6D6AFE'}}>
+              <span class="material-symbols-outlined">medication</span>
             </div>
-            <div className="input-err">
-                <input className="input-form" placeholder="password..." onChange={handleChange} value={user.password} name="password" type="password" />
-                {error && <p style={{color:'red'}}>{error.password}</p>}
-            </div>
-            <button className="btn" onClick={handleLogin}>Login</button>
           </div>
-        </form>
-        <div style={{color:'#6D6AFE'}}>
-          <span class="material-symbols-outlined">medication</span>
-        </div>
-    </div>
-    <div style={{backgroundImage: `url(${back})`, backgroundSize:'cover', backgroundRepeat: 'no-repeat', width: '100vh', height: '100vh'}}>
-    </div>
+
+
+          <div className="w-1/2 flex justify-end">
+            <img className="w-[700px] h-screen" src={back} />
+          </div>
     </div>
   )
 }
