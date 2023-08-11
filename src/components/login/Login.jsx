@@ -66,8 +66,6 @@ const Login = () => {
               <span class="material-symbols-outlined">medication</span>
             </div>
           </div>
-
-
           <div className="w-1/2 flex justify-end">
             <img className="w-[700px] h-screen" src={back} />
           </div>
