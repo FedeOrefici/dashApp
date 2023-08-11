@@ -72,7 +72,7 @@ const Appointments = () => {
               <p className="text-[11px] text-gray-500">Insert a patient</p>
               <select className="p-2" name="name" value={appointment.name} onChange={handleEvent}>
                   <option selected>Select a patient</option>
-                {patients.map(pat =>
+                {patients && patients.map(pat =>
                   <option>{pat.name}</option>
                 )}
               </select>
