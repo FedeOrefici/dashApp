@@ -1,4 +1,4 @@
-import { ADD_APPOINTMENTS, ADD_PATIENTS, DELETE_PATIENTS, DEL_APPOINTMENTS, GET_DATA } from "./actionTypes"
+import { ADD_APPOINTMENTS, ADD_PATIENTS, DELETE_PATIENTS, DEL_APPOINTMENTS, GET_DATA, GET_APPOINTMENT } from "./actionTypes"
 
 let initialState = {
     allPatients : [],
@@ -32,6 +32,9 @@ const rootReducer = (state = initialState, action) => {
         
         case DEL_APPOINTMENTS:
             const filterApp = state.appointments.filter((_, idx) => idx !== action.payload)
+            const updatedLocalStorage = JSON.parse(localStorage.getItem('appointment'))
+            const updateStoreApp = updatedLocalStorage.filter((_, idx) => idx !== action.payload)
+            localStorage.setItem('appointment', JSON.stringify(updateStoreApp))
             return {
                 ...state,
                 appointments: filterApp
@@ -41,6 +44,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allPatients: action.payload
+            }
+
+        case GET_APPOINTMENT:
+            return {
+                ...state,
+                appointments: action.payload
             }
 
         default: 

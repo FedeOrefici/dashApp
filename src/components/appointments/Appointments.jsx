@@ -1,18 +1,18 @@
 import Navbar from "../navbar/Navbar"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addAppointments } from "../../redux/actions"
+import { addAppointments, getAppointments, deleteAppointment } from "../../redux/actions"
 import validationAppointments from "./validations"
-import { deleteAppointment } from "../../redux/actions"
 
 const Appointments = () => {
 
   const patients = useSelector((state) => state.allPatients)
   const appointData = useSelector((state) => state.appointments)
+
   const dispatch = useDispatch()
   const [showData, setShowData] = useState(false)
 
-
+  
   const [appointment, setappointment] = useState({
     name: '',
     date: ''
@@ -22,6 +22,13 @@ const Appointments = () => {
     name: '',
     date: ''
   })
+
+  useEffect(() => {
+    const storedAppointments = localStorage.getItem('appointment')
+    if(storedAppointments){
+      dispatch(getAppointments(JSON.parse(storedAppointments)))
+    }
+  }, [])
 
   const handleEvent = (event) => {
     setappointment({
@@ -41,6 +48,9 @@ const Appointments = () => {
       return null;
     } else {
       setShowData(true)
+      const data = JSON.parse(localStorage.getItem('appointment')) ?? []
+      data.push(appointment)
+      localStorage.setItem('appointment', JSON.stringify(data))
       dispatch(addAppointments(appointment))
       setappointment({
         name: '',

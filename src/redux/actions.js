@@ -1,4 +1,4 @@
-import { ADD_APPOINTMENTS, ADD_PATIENTS, DELETE_PATIENTS, DEL_APPOINTMENTS, GET_DATA } from "./actionTypes";
+import { ADD_APPOINTMENTS, ADD_PATIENTS, DELETE_PATIENTS, DEL_APPOINTMENTS, GET_DATA, GET_APPOINTMENT } from "./actionTypes";
 
 export const addUser = (user) => {
     return {type: ADD_PATIENTS, payload: user}
@@ -18,4 +18,8 @@ export const deleteAppointment = (id) => {
 
 export const getData = (payload) => {
     return {type: GET_DATA, payload}
+}
+
+export const getAppointments = (payload) => {
+    return {type: GET_APPOINTMENT, payload}
 }

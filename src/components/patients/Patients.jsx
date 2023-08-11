@@ -23,13 +23,6 @@ const Patients = () => {
     dispatch(deletePatient(id))
   }
 
-  const handleEdit = (id) => {
-    const filterData = patients.filter(pat => pat.id === id)
-    setData(filterData)
-    setIsEdited(true)
-
-  }
-
 
  
 
