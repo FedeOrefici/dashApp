@@ -1,18 +1,18 @@
 import Navbar from "../navbar/Navbar"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addAppointments } from "../../redux/actions"
+import { addAppointments, getAppointments, deleteAppointment } from "../../redux/actions"
 import validationAppointments from "./validations"
-import { deleteAppointment } from "../../redux/actions"
 
 const Appointments = () => {
 
   const patients = useSelector((state) => state.allPatients)
   const appointData = useSelector((state) => state.appointments)
+
   const dispatch = useDispatch()
   const [showData, setShowData] = useState(false)
 
-
+  
   const [appointment, setappointment] = useState({
     name: '',
     date: ''
@@ -22,6 +22,13 @@ const Appointments = () => {
     name: '',
     date: ''
   })
+
+  useEffect(() => {
+    const storedAppointments = localStorage.getItem('appointment')
+    if(storedAppointments){
+      dispatch(getAppointments(JSON.parse(storedAppointments)))
+    }
+  }, [])
 
   const handleEvent = (event) => {
     setappointment({
@@ -41,6 +48,9 @@ const Appointments = () => {
       return null;
     } else {
       setShowData(true)
+      const data = JSON.parse(localStorage.getItem('appointment')) ?? []
+      data.push(appointment)
+      localStorage.setItem('appointment', JSON.stringify(data))
       dispatch(addAppointments(appointment))
       setappointment({
         name: '',
@@ -107,16 +117,15 @@ const Appointments = () => {
                       <p>{app.date}</p>
                       <div className="flex ">
                         <button className="bg-red-600 py-2 w-[100px] rounded text-white hover:bg-red-700" onClick={() => handleDelete(id)}>delete</button>
-                        <button className="bg-blue-600 py-2 w-[100px] rounded text-white hover:bg-blue-700">edit</button>
                       </div>
                     </div>
                   </div>
                   ))
                 ) : ( 
-                <div className="flex flex-col mx-auto items-center justify-center">
-                  <p className="text-2xl font-bold text-[#6D6AFE]">No appointments on your list</p>
-                  <p className="italic font-medium1">add your appointments</p>
-                </div>
+                  <div className="flex flex-col w-full h-screen items-center justify-center">
+              <p className="text-2xl font-bold text-[#6D6AFE]">No appointments on your list</p>
+              <p className="italic font-medium1">add your appointments</p>
+            </div>
               )}
       </div>
 
