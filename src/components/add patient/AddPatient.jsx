@@ -69,12 +69,10 @@ const AddPatient = () => {
     }, [showModal])
 
 
-    console.log(user);
-
   return (
     <div className="w-1/2 flex items-center justify-center h-screen bg-slate-100">
-        <form className="w-[80%] flex flex-col items-center justify-center" onSubmit={handleSubmit}>
-          <div className="w-full flex flex-col items-center">
+        <form className="w-[80%] flex flex-col items-center justify-center mt-10" onSubmit={handleSubmit}>
+          <div className="w-full flex flex-col items-center justify-center">
             <div className="w-2/3 h-[120px] flex flex-col justify-center gap-2">
                 <label className="text-[11px] text-gray-500">name</label>
                 <input className="h-[35px] bg-white border p-2" name="name" value={user.name} onChange={handleChange} type="text" />
@@ -100,18 +98,18 @@ const AddPatient = () => {
                 {errors && <p className="h-[50px] text-red-600 p-2">{errors.symptoms}</p>}
             </div>
             
-            <div className="w-1/2 flex items-center justify-center">
+            <div className="w-1/2 flex items-center justify-center absolute bottom-[185px] left-[200px]">
               <FileBase64
               multiple={false}
               onDone={(base64) => setUser({...user, file: base64})}
                />
             </div>
-            <div className="flex items-center flex-col justify-center h-[200px] w-full mt-4">
+            <div className="flex items-center flex-col justify-center h-[200px] w-ful">
               <button className="bg-[#6D6AFE] w-[500px] h-[50px] font-medium py-2 text-white rounded shadow-lg absolute bottom-[120px] hover:bg-[#4C49BB]" type="submit">add patient</button>
               {showModal && (<div className="bg-red-600 text-white w-[200px] h-[50px] py-2 rounded flex items-center justify-center">Empty fields</div>)}
             </div>
-            
           </div>
+          
         </form>
     </div>
   )

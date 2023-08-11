@@ -2,7 +2,7 @@ import AddPatient from "../add patient/AddPatient"
 import Navbar from "../navbar/Navbar"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { deletePatient, getData } from "../../redux/actions"
+import { deletePatient, getData, updateData } from "../../redux/actions"
 import { useEffect } from "react"
 
 const Patients = () => {
@@ -12,6 +12,7 @@ const Patients = () => {
   const appointments = useSelector((user) => user.appointments)
 
   useEffect(() => {
+    dispatch(getData(patients))
     const storedPatients = JSON.parse(localStorage.getItem("patients"))
     dispatch(getData(storedPatients))
   }, [])
@@ -19,6 +20,12 @@ const Patients = () => {
   const delPatient = (id) => {
     dispatch(deletePatient(id))
   }
+
+  const handleEdit = (id) => {
+    dispatch(updateData(id))
+  }
+
+
  
 
   return (
@@ -61,7 +68,7 @@ const Patients = () => {
                         )}
                       </div>
                       <div className="flex gap-4 w-1/3 items-center justify-end px-4">
-                        <button className="bg-blue-600 w-[30px] h-[30px] rounded cursor-pointer flex items-center justify-center">
+                        <button onClick={() => handleEdit(id)} className="bg-blue-600 w-[30px] h-[30px] rounded cursor-pointer flex items-center justify-center">
                           <span class="material-symbols-outlined">edit</span>
                         </button>
                         <button className="bg-red-600 w-[30px] h-[30px] py-2 rounded cursor-pointer flex items-center justify-center" onClick={() => delPatient(id)}>
