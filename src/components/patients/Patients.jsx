@@ -2,14 +2,16 @@ import AddPatient from "../add patient/AddPatient"
 import Navbar from "../navbar/Navbar"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { deletePatient, getData, updateData } from "../../redux/actions"
-import { useEffect } from "react"
+import { deletePatient, getData } from "../../redux/actions"
+import { useEffect, useState } from "react"
 
 const Patients = () => {
 
   const dispatch = useDispatch()
   const patients =  useSelector((state) => state.allPatients)
   const appointments = useSelector((user) => user.appointments)
+  const [isEdited, setIsEdited] = useState(false)
+  const [data, setData] = useState()
 
   useEffect(() => {
     dispatch(getData(patients))
@@ -22,7 +24,10 @@ const Patients = () => {
   }
 
   const handleEdit = (id) => {
-    dispatch(updateData(id))
+    const filterData = patients.filter(pat => pat.id === id)
+    setData(filterData)
+    setIsEdited(true)
+
   }
 
 
@@ -32,7 +37,7 @@ const Patients = () => {
     <>
       <Navbar />
       <div className="flex">
-        <AddPatient />
+        <AddPatient isEdited={isEdited} data={data} />
         <div className="w-1/2 flex flex-col items-center pr-4 pt-10 h-screen overflow-y-auto gap-5">
           {patients && patients.length > 0 
           ? ( patients?.map((pat, id) => (
@@ -68,9 +73,6 @@ const Patients = () => {
                         )}
                       </div>
                       <div className="flex gap-4 w-1/3 items-center justify-end px-4">
-                        <button onClick={() => handleEdit(id)} className="bg-blue-600 w-[30px] h-[30px] rounded cursor-pointer flex items-center justify-center">
-                          <span class="material-symbols-outlined">edit</span>
-                        </button>
                         <button className="bg-red-600 w-[30px] h-[30px] py-2 rounded cursor-pointer flex items-center justify-center" onClick={() => delPatient(id)}>
                           <span class="material-symbols-outlined">delete</span>
                         </button>

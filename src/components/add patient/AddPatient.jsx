@@ -105,11 +105,9 @@ const AddPatient = () => {
                />
             </div>
             <div className="flex items-center flex-col justify-center h-[200px] w-ful">
-              <button className="bg-[#6D6AFE] w-[500px] h-[50px] font-medium py-2 text-white rounded shadow-lg absolute bottom-[120px] hover:bg-[#4C49BB]" type="submit">add patient</button>
-              {showModal && (<div className="bg-red-600 text-white w-[200px] h-[50px] py-2 rounded flex items-center justify-center">Empty fields</div>)}
+              <button className="bg-[#6D6AFE] w-[500px] h-[50px] font-medium py-2 text-white rounded shadow-lg absolute bottom-[120px] hover:bg-[#4C49BB]" type="submit">add patient</button>              {showModal && (<div className="bg-red-600 text-white w-[200px] h-[50px] py-2 rounded flex items-center justify-center">Empty fields</div>)}
             </div>
-          </div>
-          
+          </div>          
         </form>
     </div>
   )

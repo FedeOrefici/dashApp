@@ -107,7 +107,6 @@ const Appointments = () => {
                       <p>{app.date}</p>
                       <div className="flex ">
                         <button className="bg-red-600 py-2 w-[100px] rounded text-white hover:bg-red-700" onClick={() => handleDelete(id)}>delete</button>
-                        <button className="bg-blue-600 py-2 w-[100px] rounded text-white hover:bg-blue-700">edit</button>
                       </div>
                     </div>
                   </div>
