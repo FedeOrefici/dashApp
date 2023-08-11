@@ -59,7 +59,7 @@ const Login = () => {
                 </div>
                 <div className="flex flex-col justify-center items-center h-[200px] w-full px-2">
                   <button className="bg-[#6D6AFE] rounded text-white shadow-lg w-[300px] h-[50px] absolute bottom-[400px]" onClick={handleLogin}>Login</button>
-                  {showMessage && <p className="bg-red-600 w-[300px] rounded h-[50px] text-white flex justify-center items-center">Incomplete Fields</p>} 
+                  {showMessage && <p className="bg-red-600 w-[300px] rounded h-[50px] text-white flex justify-center items-center">Empty email</p>} 
                 </div>
             </form>
             <div style={{color:'#6D6AFE'}}>
