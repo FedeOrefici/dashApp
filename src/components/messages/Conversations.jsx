@@ -82,7 +82,10 @@ const Conversations = ({patients, emailSelected}) => {
             </form>
         </div>
     ) : (
-        <p>Select a patient to send an email</p>
+        <div className="flex flex-col w-full h-screen items-center justify-center">
+                    <p className="text-2xl font-bold text-[#6D6AFE]">Select a patient</p>
+                    <p className="italic font-medium1">to send an email</p>
+                </div>
     )}
     </div>
   )
