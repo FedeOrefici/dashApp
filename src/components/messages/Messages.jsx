@@ -1,11 +1,26 @@
 import Navbar from "../navbar/Navbar"
-
+import Chats from "./Chats"
+import Conversations from "./Conversations"
 
 const Messages = () => {
   return (
     <div>
         <Navbar />
-        <p>messages</p>
+        <div className="flex w-full">
+          <div className="w-1/4 bg-slate-300 h-screen p-2">
+            <div className="h-screen p-2 flex flex-col justify-around">
+              <div className="h-1/2 flex flex-col gap-2 py-2">
+                <Chats />
+              </div>
+              <div style={{color:'#6D6AFE'}} className="flex justify-center">
+                <span class="material-symbols-outlined">medication</span>
+              </div>
+            </div>
+          </div>
+          <div className="w-3/4 h-screen">
+            <Conversations />
+          </div>
+        </div>
     </div>
   )
 }

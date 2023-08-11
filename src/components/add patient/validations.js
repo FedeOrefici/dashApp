@@ -12,6 +12,9 @@ const validationsPatients = (user) => {
     if(!user.symptoms){
         errors.symptoms = 'Required'
     }
+    if(!user.email){
+        errors.email = 'Required'
+    }
     return errors;
 }
 

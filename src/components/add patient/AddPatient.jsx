@@ -5,26 +5,26 @@ import validationsPatients from "./validations"
 import FileBase64 from 'react-file-base64'
 
 
-
 const AddPatient = () => {
     
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
-    
 
     const [user, setUser] =  useState({
         name: '',
         age: '',
         gender: '',
         symptoms: '',
-        file: ''
+        file: '',
+        email:''
       })
 
     const [errors, setErrors] = useState({
       name: '',
       age: '',
       gender: '',
-      symptoms: ''
+      symptoms: '',
+      email:''
     })
       
     const handleChange = (event) => {
@@ -59,7 +59,8 @@ const AddPatient = () => {
           age: '',
           gender: '',
           symptoms: '',
-          file: ''
+          file: '',
+          email:''
       })
     }
     
@@ -67,12 +68,11 @@ const AddPatient = () => {
       let timeOut = setTimeout(() => {setShowModal(false)}, 2000)
       return () => clearTimeout(timeOut)
     }, [showModal])
-
+    
 
   return (
-    <div className="w-1/2 flex flex-col items-center justify-center h-screen bg-slate-100">
-      
-        <form className="w-[80%] flex flex-col items-center justify-center mt-10" onSubmit={handleSubmit}>
+
+        <form className="w-[80%] flex" onSubmit={handleSubmit}>
           <div className="w-full flex flex-col items-center justify-center">
             <div className="w-2/3 h-[120px] flex flex-col justify-center gap-2">
                 <label className="text-[11px] text-gray-500">name</label>
@@ -83,6 +83,11 @@ const AddPatient = () => {
                 <label className="text-[11px] text-gray-500">age</label>
                 <input className="h-[35px] bg-white border px-2" name="age" value={user.age} onChange={handleChange} type="number" />
                 {errors && <p className="h-[50px] text-red-600 p-2">{errors.age}</p>}
+            </div>
+            <div className="w-2/3 h-[120px] flex flex-col justify-center gap-2">
+                <label className="text-[11px] text-gray-500">email</label>
+                <input className="h-[35px] bg-white border p-2" name="email" value={user.email} onChange={handleChange} type="text" />
+                {errors && <p className="h-[50px] text-red-600 p-2">{errors.email}</p>}
             </div>
             <div className="w-2/3 flex flex-col justify-center">
                 <label className="text-[11px] text-gray-500">genre</label>
@@ -99,23 +104,16 @@ const AddPatient = () => {
                 {errors && <p className="h-[50px] text-red-600 p-2">{errors.symptoms}</p>}
             </div>
             
-            <div className="w-1/2 flex items-center justify-center absolute bottom-[185px] left-[200px]">
-              <FileBase64
-              multiple={false}
-              onDone={(base64) => setUser({...user, file: base64})}
-               />
+            <div className="w-1/2 flex items-center justify-center absolute bottom-[350px] left-[80px]">
+              <FileBase64 multiple={false} onDone={(base64) => setUser({...user, file: base64})} />
             </div>
-            <div className="flex items-center flex-col justify-center h-[200px] w-ful">
+            <div className="flex items-center flex-col justify-center h-[200px] w-full">
               <button className="bg-[#6D6AFE] w-[500px] h-[50px] font-medium py-2 text-white rounded shadow-lg absolute bottom-[120px] hover:bg-[#4C49BB]" type="submit">add patient</button>
               {showModal && (<div className="bg-red-600 text-white w-[200px] h-[50px] py-2 rounded flex items-center justify-center">Empty fields</div>)}
             </div>
-            <div className="flex gap-2">
-              <p>add a new</p>
-              <span className="italic font-bold text-[#6D6AFE]">patient</span>
-            </div>
           </div>          
         </form>
-    </div>
+
   )
 }
 

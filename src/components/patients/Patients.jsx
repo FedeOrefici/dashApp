@@ -29,8 +29,10 @@ const Patients = () => {
   return (
     <>
       <Navbar />
-      <div className="flex">
-        <AddPatient isEdited={isEdited} data={data} />
+      <div className="flex w-full">
+        <div className="w-1/2 bg-slate-200 flex items-center justify-center">
+          <AddPatient />
+        </div>
         <div className="w-1/2 flex flex-col items-center pr-4 pt-10 h-screen overflow-y-auto gap-5">
           {patients && patients.length > 0 
           ? ( patients?.map((pat, id) => (
