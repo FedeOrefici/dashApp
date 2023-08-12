@@ -52,20 +52,20 @@ const Conversations = ({patients, emailSelected}) => {
 
 
   return (
-    <div className="w-full h-screen flex items-center">
+    <div className="w-full h-[800px] flex items-center">
     {selectedPatient ? (
         <div className="h-[100%] w-full flex flex-col items-center justify-between">
             <div className="w-full pt-2">
-                <div className="bg-slate-200 border w-[70%] rounded h-[100px] mx-auto flex items-center justify-center">
-                    <p>{selectedPatient.email}</p>
+                <div className="text-black w-[100%] h-[100px] flex items-center justify-center">
+                    <p>to: {selectedPatient.email}</p>
                 </div>  
             </div>
 
                 {sentMessages && emailSelected === selectedPatient.email && 
-                <div className="bg-slate-200 w-[70%] rounded p-2 min-h-[700px] flex items-center justify-center">
-                        <div className="bg-white p-2">
-                            <p className="h-[400px] italic">{sentMessages}</p>
-                            <div className="bg-slate-50 flex flex-col items-center justify-center py-2">
+                <div className="w-[70%] rounded p-2 min-h-[500px] flex items-center justify-center border">
+                        <div className="flex items-center justify-center flex-col p-4">
+                            <p className="h-[400px] italic text-black">{sentMessages}</p>
+                            <div className="flex flex-col items-center justify-center py-2">
                                 <img className="w-[30px] h-[30px] rounded-full" src={doc} /> 
                                 <p>Dr. Doctor</p>
                                 <p>Public Hospital n° 10</p>
@@ -76,16 +76,18 @@ const Conversations = ({patients, emailSelected}) => {
                 {send && <p className="bg-red-600 w-[300px] rounded h-[50px] text-white flex justify-center items-center">Incomplete Fields</p>} 
       
             
-            <form onSubmit={handleSubmit} className="flex border h-[10%] items-center justify-around w-full bg-slate-300">
-                <input value={message.message} name="message" onChange={handleChange} className="bg-gray-100 w-[85%] p-2 rounded" type="text" />
-                <button type="submit" className="bg-[#6D6AFE] text-white rounded p-2 w-[15%]">send</button>
+            <form onSubmit={handleSubmit} className="flex h-[10%] items-center justify-around w-full bg-slate-300">
+                <input value={message.message} name="message" onChange={handleChange} className="bg-gray-100 w-[90%] p-2 rounded" type="text" />
+                <button type="submit" className="bg-[#6D6AFE] text-white rounded p-2 w-[10%]">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
             </form>
         </div>
     ) : (
         <div className="flex flex-col w-full h-screen items-center justify-center">
-                    <p className="text-2xl font-bold text-[#6D6AFE]">Select a patient</p>
-                    <p className="italic font-medium1">to send an email</p>
-                </div>
+            <p className="text-2xl font-bold text-[#6D6AFE]">Select a patient</p>
+            <p className="italic font-medium1">to send an email</p>
+        </div>
     )}
     </div>
   )
