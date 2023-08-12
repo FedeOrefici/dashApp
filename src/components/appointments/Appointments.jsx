@@ -123,9 +123,9 @@ const Appointments = () => {
                   ))
                 ) : ( 
                   <div className="flex flex-col w-full h-screen items-center justify-center">
-              <p className="text-2xl font-bold text-[#6D6AFE]">No appointments on your list</p>
-              <p className="italic font-medium1">add your appointments</p>
-            </div>
+                    <p className="text-2xl font-bold text-[#6D6AFE]">No appointments on your list</p>
+                    <p className="italic font-medium1">add your appointments</p>
+                </div>
               )}
       </div>
 

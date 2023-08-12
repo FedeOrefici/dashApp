@@ -36,9 +36,9 @@ const Patients = () => {
         <div className="w-1/2 flex flex-col items-center pr-4 pt-10 h-screen overflow-y-auto gap-5">
           {patients && patients.length > 0 
           ? ( patients?.map((pat, id) => (
-            <div className="bg-white w-[90%] h-[200px] rounded flex shadow-lg" key={id}>         
+            <div className="bg-white w-[70%] h-[150px] rounded flex shadow-lg" key={id}>         
                 <div className="w-1/4">
-                  <img className="h-[200px] w-[210px] rounded" src={pat.file.base64} /> 
+                  <img className="h-[150px] w-[150px] rounded" src={pat.file.base64} /> 
                 </div>
                 <div className="flex flex-col w-3/4">
                   <div className="flex w-full items-center justify-between px-2">

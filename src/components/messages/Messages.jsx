@@ -15,10 +15,10 @@ const Messages = () => {
   return (
     <div>
         <Navbar />
-        <div className="flex w-full">
-          <div className="w-1/4 bg-slate-300 h-screen p-2">
-            <div className="h-screen p-2 flex flex-col justify-around">
-              <div className="h-1/2 flex flex-col gap-2 py-2">
+        <div className="flex w-3/4 mx-auto">
+          <div className="w-2/4 bg-slate-300 h-[800px]">
+            <div className="h-[800px] flex flex-col justify-around">
+              <div className="h-1/2 flex flex-col py-2">
                 <Chats patients={patients} handlePatientClick={handlePatientClick} />
               </div>
               <div style={{color:'#6D6AFE'}} className="flex justify-center">
